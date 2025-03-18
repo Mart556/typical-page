@@ -19,3 +19,14 @@
 .button:focus {
     outline: none;
 }
+
+.button:disabled {
+    background: #ac0e77;
+    border-color: #ac0e77;
+    cursor: not-allowed;
+}
+
+.button:disabled:hover, .button:disabled:focus {
+    background: #ac0e77;
+    border-color: #ac0e77;
+}
