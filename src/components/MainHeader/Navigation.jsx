@@ -2,25 +2,32 @@ import './Navigation.css';
 
 import Button from '../UI/Button';
 
+import AuthContext from '../../store/auth.context';
+
 const Navigation = (props) => {
     return (
-        <nav className="nav">
-            <ul>
-                <li>
-                    <a href="/">Users</a>
-                </li>
-                <li>
-                    <a href="/new-meetup">Admin</a>
-                </li>
-                {
-                    props.isLoggedIn && (
+        <AuthContext.Consumer>
+
+            {ctx => (
+                <nav className="nav">
+                    <ul>
                         <li>
-                            <Button onClick={props.onLogout}> Logout </Button>
+                            <a href="/">Users</a>
                         </li>
-                    )
-                }
-            </ul>
-        </nav>
+                        <li>
+                            <a href="/new-meetup">Admin</a>
+                        </li>
+                        {
+                            ctx.isLoggedIn && (
+                                <li>
+                                    <Button onClick={ctx.onLogout}> Logout </Button>
+                                </li>
+                            )
+                        }
+                    </ul>
+                </nav>
+            )}
+        </AuthContext.Consumer>
     );
 }
 
